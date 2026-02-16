@@ -82,3 +82,49 @@ feature/recursive-free
 feature/circular-queue
 
 Push to GitHub for access anywhere.
+
+job.c/.h 
+- Defines a job struct and functions to create/free jobs
+
+queue.c/.h
+- Implements the queue (linked list or circular array) that holds jobs
+
+scheduler.c/.h
+- Logic that manages the flow: enqueue jobs, pick jobs to process, optionally compute stats
+
+main.c
+- Entry point: sets up the scheduler, creates jobs, runs them, tests functionality
+
+What a Job Scheduler Is
+
+A job scheduler is a system that manages a list (queue) of jobs/tasks and decides when and in what order they are executed.
+
+Job → a unit of work, e.g., “process data for 5 seconds”
+
+Queue → where jobs wait until they are executed
+
+Scheduler → the logic that picks which job to run next and handles completion
+
+High-level flow
+
+1. Jobs arrive
+
+- New jobs are created (think create_job(id, duration)).
+
+2. Jobs wait in a queue
+
+- If there’s space in the queue, the job is added (enqueue)
+
+- If the queue is full, the job is rejected or retried later
+
+3. Scheduler processes jobs
+
+- Takes jobs from the front of the queue (dequeue)
+
+- Simulates doing the work (duration, etc.)
+
+- Frees memory after completion
+
+4. Statistics / monitoring (optional)
+
+- Track average wait time, max queue depth, total jobs processed

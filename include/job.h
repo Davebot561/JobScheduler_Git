@@ -4,6 +4,7 @@
 typedef struct job {
     int id;
     int duration;
+    char *name;
     struct job *next;
 } job_t;
 

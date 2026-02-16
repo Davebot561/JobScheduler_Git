@@ -9,7 +9,7 @@ typedef struct job {
 } job_t;
 
 // Allocate a new job
-job_t* create_job(int id, int duration);
+job_t* create_job(int id, int duration, char *name);
 
 // Free a single job
 void free_job(job_t *job);

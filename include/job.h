@@ -3,13 +3,13 @@
 
 typedef struct job {
     int id;
-    int duration;
+    float duration;
     char *name;
     struct job *next;
 } job_t;
 
 // Allocate a new job
-job_t* create_job(int id, int duration, char *name);
+job_t* create_job(int *id, int jP);
 
 // Free a single job
 void free_job(job_t *job);

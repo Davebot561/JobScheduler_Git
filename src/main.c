@@ -8,6 +8,10 @@ int main () {
     int choice, jobPick = 0;
     int id = 0;
 
+    Queue *jobQueue;
+    init(jobQueue);
+    
+
     while(1) {
 
         printf("---------MENU---------\n");
@@ -37,7 +41,12 @@ int main () {
                     scanf("%d", &jobPick);
                 } while (jobPick < 1 || jobPick > 5);
 
-                create_job(&id, jobPick);
+                enqueue(jobQueue, &id, jobPick);
+                displayQueue(jobQueue);
+                break;
+
+            case 2:
+                printf("")
         }
     }
 }

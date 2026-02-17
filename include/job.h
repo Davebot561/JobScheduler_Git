@@ -12,6 +12,7 @@ typedef struct job {
 job_t* create_job(int *id, int jP);
 
 // Free a single job
-void free_job(job_t *job);
+void free_job(job_t *j, int *id);
+void reorder_jobs_id(job_t *j);
 
 #endif // JOB_H

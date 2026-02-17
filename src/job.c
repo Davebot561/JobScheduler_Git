@@ -1,10 +1,10 @@
-
+/* this program creates and frees jobs */
 #include "job.h"
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
 
-job_t* create_job(int *id, int duration, int jP) {
+job_t* create_job(int *id, int jP) {
     job_t *job = malloc(sizeof(job_t));
 
     // fil job info
@@ -40,7 +40,15 @@ job_t* create_job(int *id, int duration, int jP) {
     return job;
 }
 
-void free_job(job_t *job) {
-    free(job->name);
-    free(job);
+void reorder_jobs_id(job_t *j) {
+    while(j) {
+        j->id--;
+        j = j->next;
+    }
+}
+
+void free_job(job_t *j, int *id) {
+    free(j->name);
+    free(j);
+    (*id)--;
 }

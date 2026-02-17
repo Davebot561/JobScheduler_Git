@@ -1,5 +1,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
+#include "job.h"
 
 #define EMPTY -1
 #define FULL -1
@@ -12,7 +13,7 @@ typedef struct queue {
 
 void init(Queue *qPtr);
 int enqueue(Queue *qPtr, int *id, int jP);
-int dequeue(Queue *qPtr, int pos, int *id);
+int dequeue(Queue *qPtr, int *id, int pos);
 void displayQueue(Queue *qPtr);
 int empty(Queue *qPtr);
 

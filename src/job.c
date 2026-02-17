@@ -12,27 +12,27 @@ job_t* create_job(int *id, int jP) {
     if (jP == 1) {
         job->duration = 6;
         job->name = malloc(14 * sizeof(char));
-        job->name = "Get groceries";
+        strcpy(job->name, "Get groceries");
     }
     else if (jP == 2) {
         job->duration = 2;
         job->name = malloc(13 * sizeof(char));
-        job->name = "Clean dishes";
+        strcpy(job->name, "Clean dishes");
     }
     else if (jP == 3) {
         job->duration = 4.5;
         job->name = malloc(12 * sizeof(char));
-        job->name = "Cook dinner";
+        strcpy(job->name, "Cook dinner");
     }
     else if (jP == 4) {
         job->duration = 7;
         job->name = malloc(12 * sizeof(char));
-        job->name = "Go to class";
+        strcpy(job->name, "Go to class");
     }
     else {
         job->duration = 7;
         job->name = malloc(12 * sizeof(char));
-        job->name = "Do homework";
+        strcpy(job->name, "Do homework");
     }
     
     job->next = NULL;
@@ -51,4 +51,5 @@ void free_job(job_t *j, int *id) {
     free(j->name);
     free(j);
     (*id)--;
+    return;
 }

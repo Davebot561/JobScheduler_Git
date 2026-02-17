@@ -2,6 +2,7 @@
 #define QUEUE_H
 
 #define EMPTY -1
+#define FULL -1
 
 typedef struct queue {
     job_t *front;

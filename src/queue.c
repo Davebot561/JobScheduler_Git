@@ -22,7 +22,7 @@ int enqueue(Queue *qPtr, int *id, int jP) {
     // check if Queue is full
     if (id == qPtr->capacity) {
         printf("The queue is full.\n");
-        return 1;
+        return FULL;
     }
 
     // creates job and adds to the back
@@ -40,14 +40,22 @@ int dequeue(Queue *qPtr, int pos, int *id) {
     job_t *tmpPtr;
 
     for (int i = 0; i < *id; i++) {
-        if (qPtr->front->next->id == pos) {
-            tmpPtr = qPtr->front->next;
-            qPtr->front->next = qPtr->front->next->next;
+        if (qPtr->front->id == pos) {
+            tmpPtr = qPtr->front;
+            qPtr->front = qPtr->front->next;
             free_job(tmpPtr, &id);
-            reorder_jobs_id(qPtr->front->next);
-            return 1;
+            break;
         }
         qPtr->front = qPtr->front->next;
+    }
+
+    if (empty(qPtr)) {
+        qPtr->back = NULL;
+        return 1;
+    }
+    else {
+        reorder_jobs_id(qPtr->front);
+        return 1;
     }
 }
 
